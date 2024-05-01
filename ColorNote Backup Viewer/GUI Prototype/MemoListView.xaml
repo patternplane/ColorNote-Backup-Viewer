@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="ColorNote_Backup_Viewer.GUI_Prototype.MemoListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ColorNote_Backup_Viewer.GUI_Prototype"
+             mc:Ignorable="d" 
+             d:DesignHeight="390" d:DesignWidth="470">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="160*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="정렬 기준 : " VerticalAlignment="Center"></Label>
+            <ToggleButton Content="제목" Height="30" Width="70" Margin="5"></ToggleButton>
+            <ToggleButton Content="날짜" Height="30" Width="70" Margin="5" IsChecked="True"></ToggleButton>
+            <ToggleButton Content="색" Height="30" Width="70" Margin="5"></ToggleButton>
+        </StackPanel>
+        <ListBox Grid.Row="1">
+            <ListBoxItem HorizontalContentAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Height="30" Background="#FFFFE1BD" Margin="0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="메모1 제목"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="2024/4/30" Margin="0,0,5,0" HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+            </ListBoxItem>
+
+            <ListBoxItem HorizontalContentAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Height="30" Background="#FFFFE1BD" Margin="0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="메모2 제목"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="2024/3/5" Margin="0,0,5,0" HorizontalAlignment="Right"></TextBlock>
+
+                    <Popup IsOpen="true">
+                        <StackPanel Background="LightGray">
+                            <Button Content="텍스트 파일로 내보내기"/>
+                            <Button Content="HTML 파일로 내보내기"/>
+                        </StackPanel>
+                    </Popup>
+                </Grid>
+            </ListBoxItem>
+
+            <ListBoxItem HorizontalContentAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Height="30" Background="#FFD2FFBD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="메모3 제목"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="2024/2/19" Margin="0,0,5,0" HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+            </ListBoxItem>
+        </ListBox>
+    </Grid>
+</UserControl>

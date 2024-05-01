@@ -6,15 +6,15 @@
              xmlns:local="clr-namespace:ColorNote_Backup_Viewer.GUI_Prototype"
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="250">
-    <Border Background="#4C808080" BorderThickness="1" BorderBrush="Black">
+    <Border BorderThickness="1" BorderBrush="Black" Background="#FFFFFAE7">
         <Grid Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Button Margin="6" Content="+ 새 파일 열기"/>
-            <ListBox Margin="6,0,6,6" Grid.Row="1">
-                <ListBoxItem HorizontalContentAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Padding="1">
+            <ListBox Margin="6,0,6,6" Grid.Row="1" BorderThickness="1" BorderBrush="Black">
+                <ListBoxItem HorizontalContentAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Padding="1" Margin="0,1">
                     <Grid Height="30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -25,7 +25,45 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="사용자 제목??" HorizontalAlignment="Stretch"/>
+                            <!--백업 파일 명을 사용자가 바꿀수도 있는 기능 추가-->
+                            <TextBlock Grid.Row="0" Text="백업 파일 1" HorizontalAlignment="Stretch"/>
+                            <TextBlock Grid.Row="1" Text="날짜 / 메모 수" HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Button Grid.Column="1" Content="V"/>
+                    </Grid>
+                </ListBoxItem>
+                <ListBoxItem HorizontalContentAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Padding="1" Margin="0,1">
+                    <Grid Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--백업 파일 명을 사용자가 바꿀수도 있는 기능 추가-->
+                            <TextBlock Grid.Row="0" Text="백업 파일 2" HorizontalAlignment="Stretch"/>
+                            <TextBlock Grid.Row="1" Text="날짜 / 메모 수" HorizontalAlignment="Stretch"/>
+                        </Grid>
+                        <Button Grid.Column="1"/>
+                    </Grid>
+                </ListBoxItem>
+
+                <ListBoxItem HorizontalContentAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Padding="1" Margin="0,1">
+                    <Grid Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--백업 파일 명을 사용자가 바꿀수도 있는 기능 추가-->
+                            <TextBlock Grid.Row="0" Text="백업 파일 3" HorizontalAlignment="Stretch"/>
                             <TextBlock Grid.Row="1" Text="날짜 / 메모 수" HorizontalAlignment="Stretch"/>
                         </Grid>
                         <Button Grid.Column="1"/>

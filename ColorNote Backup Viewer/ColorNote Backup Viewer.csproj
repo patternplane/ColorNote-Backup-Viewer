@@ -59,9 +59,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI Prototype\MainWindow.xaml">
+    <Page Include="GUI Prototype\MemoCalendarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI Prototype\MemoListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI Prototype\NullView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI Prototype\PMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI Prototype\NotesView.xaml">
       <SubType>Designer</SubType>
@@ -82,8 +94,17 @@
     <Compile Include="GUI Prototype\ControlBar.xaml.cs">
       <DependentUpon>ControlBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI Prototype\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="GUI Prototype\MemoCalendarView.xaml.cs">
+      <DependentUpon>MemoCalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI Prototype\MemoListView.xaml.cs">
+      <DependentUpon>MemoListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI Prototype\NullView.xaml.cs">
+      <DependentUpon>NullView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI Prototype\PMainWindow.xaml.cs">
+      <DependentUpon>PMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI Prototype\NotesView.xaml.cs">
       <DependentUpon>NotesView.xaml</DependentUpon>
