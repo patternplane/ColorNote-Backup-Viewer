@@ -92,13 +92,13 @@ namespace ColorNote_Backup_Viewer.Model
                     if (rawMemo.encrypted == 1)
                     {
                         rawMemo.note = Encoding.UTF8.GetString(
-                            AESDecryptor.decryptEncryptedNote(Encoding.UTF8.GetBytes(rawMemo.note)));
+                            AESDecryptor.decryptEncryptedNote(Convert.FromBase64String(rawMemo.note)));
                     }
 
                     if (rawMemo.folder_id == 0 || rawMemo.folder_id == 16
                         || rawMemo.active_state == 0 || rawMemo.active_state == 16)
-                        if (rawMemo.title != null && rawMemo.title.Length > 0
-                            && rawMemo.note != null && rawMemo.note.Length > 0)
+                        if ((rawMemo.title != null && rawMemo.title.Length > 0)
+                            || (rawMemo.note != null && rawMemo.note.Length > 0))
                             result.Add(
                                 new MemoData(
                                     rawMemo.title,
@@ -108,7 +108,7 @@ namespace ColorNote_Backup_Viewer.Model
                                     rawMemo.reminder_base,
                                     rawMemo.active_state == 16,
                                     rawMemo.color_index));
-                }
+                        }
                 catch { }
             }
             return result.ToArray();

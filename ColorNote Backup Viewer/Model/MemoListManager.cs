@@ -30,13 +30,40 @@ namespace ColorNote_Backup_Viewer.Model
             switch (type)
             {
                 case SortType.Title :
-                    temp.Sort((m1, m2) => m1.title.CompareTo(m2.title));
+                    temp.Sort(
+                        (m1, m2) => 
+                        { 
+                            int result = m1.title.CompareTo(m2.title);
+                            if (result == 0)
+                                result = m2.date.CompareTo(m1.date);
+                            if (result == 0)
+                                result = m1.color.CompareTo(m2.color);
+                            return result;
+                        });
                     break;
                 case SortType.Date:
-                    temp.Sort((m1, m2) => m2.date.CompareTo(m1.date));
+                    temp.Sort(
+                        (m1, m2) =>
+                        {
+                            int result = m2.date.CompareTo(m1.date);
+                            if (result == 0)
+                                result = m1.color.CompareTo(m2.color);
+                            if (result == 0)
+                                result = m1.title.CompareTo(m2.title);
+                            return result;
+                        });
                     break;
                 case SortType.Color:
-                    temp.Sort((m1, m2) => m1.color.CompareTo(m2.color));
+                    temp.Sort(
+                        (m1, m2) =>
+                        {
+                            int result = m1.color.CompareTo(m2.color);
+                            if (result == 0)
+                                result = m2.date.CompareTo(m1.date);
+                            if (result == 0)
+                                result = m1.title.CompareTo(m2.title);
+                            return result;
+                        });
                     break;
             }
             list.Clear();

@@ -9,9 +9,8 @@ namespace ColorNote_Backup_Viewer.ViewModel
     public class SortOrderSelecterViewModel
     {
         public string title { get; set; }
-        private bool _isChecked;
-        public bool isChecked { get { return _isChecked; } 
-            set { _isChecked = value; if (value) sortFunc(sortOrder); } }
+        private bool _isChecked = false;
+        public bool isChecked { get { return _isChecked; } set { if (_isChecked != value && value) sortFunc(sortOrder); _isChecked = value; } }
         private SortType sortOrder;
         private sort sortFunc;
 
@@ -19,10 +18,10 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         public SortOrderSelecterViewModel(string title, SortType sortOrder, sort sortFunc , bool isChecked)
         {
-            this.title = title;
-            this._isChecked = isChecked;
             this.sortOrder = sortOrder;
             this.sortFunc = sortFunc;
+            this.title = title;
+            this.isChecked = isChecked;
         }
     }
 }
