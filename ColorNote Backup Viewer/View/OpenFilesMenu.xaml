@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="ColorNote_Backup_Viewer.View.OpenFilesMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ColorNote_Backup_Viewer.View"
+             mc:Ignorable="d" 
+             Width="300"
+             d:DesignHeight="450">
+    <Border BorderThickness="1" BorderBrush="Black" Background="#FFFFFAE7">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Margin="6" Content="+ 새 파일 열기" FontSize="15" Click="EH_NewFileOpenButtonClick"/>
+            <ListBox Margin="6,0,6,6" Grid.Row="1" BorderThickness="1" BorderBrush="Black"
+                     ItemsSource="{Binding memoFilesData.openFilesList}"
+                     SelectedIndex="{Binding selectedIdx, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type ListBoxItem}">
+                        <Grid Height="30">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="true">
+                                            <Setter Property="Background" Value="#FFFFD891"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding fileName}" FontSize="13" HorizontalAlignment="Stretch"/>
+                            <TextBlock Grid.Row="1" Text="{Binding metaInfo}" FontSize="12" Foreground="Gray" HorizontalAlignment="Stretch"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Padding" Value="1"/>
+                        <Setter Property="Margin" Value="0,1"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+    </Border>
+</UserControl>

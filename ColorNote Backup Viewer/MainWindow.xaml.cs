@@ -20,11 +20,37 @@ namespace ColorNote_Backup_Viewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(ViewModel.MainWindowViewModel dataContext)
         {
             InitializeComponent();
 
-            new GUI_Prototype.PMainWindow().Show();
+            this.DataContext = dataContext;
+
+            Binding b = new Binding("isMenuBarOut");
+            b.Mode = BindingMode.TwoWay;
+            this.SetBinding(IsMenuBarOutProperty, b);
+        }
+
+        public static readonly DependencyProperty IsMenuBarOutProperty =
+        DependencyProperty.Register(
+            name: "IsMenuBarOut",
+            propertyType: typeof(bool),
+            ownerType: typeof(MainWindow));
+
+        public bool IsMenuBarOut
+        {
+            get => (bool)GetValue(IsMenuBarOutProperty);
+            set => SetValue(IsMenuBarOutProperty, value);
+        }
+
+        private void EH_MenuBarOutButtonClick(object sender, RoutedEventArgs e)
+        {
+            IsMenuBarOut = true;
+        }
+
+        private void EH_MenuBarCloseButtonClick(object sender, RoutedEventArgs e)
+        {
+            IsMenuBarOut = false;
         }
     }
 }

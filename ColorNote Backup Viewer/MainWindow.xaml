@@ -5,8 +5,109 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorNote_Backup_Viewer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Colornote Backup Reader" Height="700" Width="600" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Black" BorderThickness="0,0,0,1">
+            <Grid Background="#FFE3FAFF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="2" Padding="0" Click="EH_MenuBarOutButtonClick">
+                    <TextBlock Padding="0" Margin="0" Text="≡" FontSize="45" Height="70" Background="{x:Null}" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-14"/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Button>
+                <TextBlock Text="{Binding fileName}" Grid.Column="1" FontSize="20" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Button Grid.Column="1" FontSize="14" Height="35" Width="100" Margin="0,0,7,0" HorizontalAlignment="Right">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding viewState}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding viewState}" Value="1">
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                    <Setter Property="Content" Value="달력 메모 보기"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding viewState}" Value="2">
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                    <Setter Property="Content" Value="일반 메모 보기"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1">
+            <ContentControl Content="{Binding selectedView}"/>
+        </Border>
+
+        <Border Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" FlowDirection="RightToLeft" Width="0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+                <Button Width="30" Height="30" VerticalAlignment="Top" Background="PaleVioletRed" Click="EH_MenuBarCloseButtonClick">
+                    <TextBlock Text="X" FontSize="25" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-4"/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Button>
+                <ContentControl Content="{Binding openFilesView}" FlowDirection="LeftToRight"/>
+            </StackPanel>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding isMenuBarOut}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="Width"
+                                            Duration="0:0:0.3"
+                                            From="0"
+                                            To="330">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"></CubicEase>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="Width"
+                                            Duration="0:0:0.3"
+                                            To="0">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseIn"></CubicEase>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
     </Grid>
 </Window>

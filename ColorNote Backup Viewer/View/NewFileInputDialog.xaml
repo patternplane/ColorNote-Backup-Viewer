@@ -1,0 +1,46 @@
+﻿<Window x:Class="ColorNote_Backup_Viewer.View.NewFileInputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorNote_Backup_Viewer.View"
+        mc:Ignorable="d"
+        Title="새 파일 열기" Height="280" Width="460"
+        ResizeMode="NoResize">
+    <Grid Margin="40,20,40,30">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="파일 등록" FontSize="16" VerticalAlignment="Bottom"/>
+
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Top">
+            <Grid>
+                <TextBlock Margin="7,0,0,0" VerticalAlignment="Center" Text="{Binding filePathDisplay}"/>
+                <Button HorizontalAlignment="Right" Width="80" Height="25" Click="EH_fileAddButtonClick">
+                    <TextBlock Text="+" FontSize="30" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-3"/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform></TextBlock>
+                </Button>
+            </Grid>
+        </Border>
+
+        <Label Grid.Row="2" Content="비밀번호 입력" FontSize="16" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Row="3" Text="{Binding password}" FontSize="16" VerticalAlignment="Top"></TextBox>
+
+        <Grid Grid.Row="5" Margin="20,0">
+            <Button HorizontalAlignment="Left" Width="100" Content="확 인" Click="EH_OKButtonClick"></Button>
+            <Button HorizontalAlignment="Right" Width="100" Content="취 소" Click="EH_CancelButtonClick"></Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -13,5 +13,20 @@ namespace ColorNote_Backup_Viewer
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            ViewModel.MemoFilesData memoFilesData = 
+                new ViewModel.MemoFilesData(
+                    new ViewModel.MemoViewViewModelFactory(
+                        new Model.MemoExporter(
+                            new Model.HTMLDocumentManager())));
+            ViewModel.OpenFilesMenuViewModel openFileMenu = new ViewModel.OpenFilesMenuViewModel(memoFilesData);
+
+            new MainWindow(
+                new ViewModel.MainWindowViewModel(
+                    openFileMenu,
+                    memoFilesData))
+                .Show();
+        }
     }
 }
