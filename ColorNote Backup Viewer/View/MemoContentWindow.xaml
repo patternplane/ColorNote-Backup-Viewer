@@ -1,0 +1,16 @@
+﻿<Window x:Class="ColorNote_Backup_Viewer.View.MemoContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorNote_Backup_Viewer.View"
+        mc:Ignorable="d"
+        Title="{Binding title, Mode=OneWay}" Height="450" Width="800" WindowStyle="ToolWindow" ShowInTaskbar="False">
+    <Grid Background="AliceBlue">
+        <Border Margin="20" Background="White" BorderBrush="Gray" BorderThickness="1">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" Padding="5,5,0,5">
+                <TextBox BorderThickness="0" IsReadOnlyCaretVisible="True" IsReadOnly="True" Text="{Binding content, Mode=OneWay}" FontSize="15"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

@@ -39,6 +39,7 @@
                     <Setter Property="Background" Value="#FFFFE1BD"/>
                     <Setter Property="Margin" Value="0,1"/>
                     <Setter Property="MaxWidth" Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                    <EventSetter Event="MouseDoubleClick" Handler="EH_ItemDoubleClicked"/>
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>

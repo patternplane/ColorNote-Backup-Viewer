@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ColorNote_Backup_Viewer.ViewModel
 {
@@ -20,6 +21,8 @@ namespace ColorNote_Backup_Viewer.ViewModel
         private bool _isMenuBarOut;
         public bool isMenuBarOut { get { return _isMenuBarOut; } set { _isMenuBarOut = value; NotifyPropertyChanged(nameof(isMenuBarOut)); } }
 
+        public ICommand CChangeViewType { get; }
+
         public MainWindowViewModel(OpenFilesMenuViewModel openFilesMenuVM, MemoFilesData memoFilesData)
         {
             this.openFilesView = openFilesMenuVM;
@@ -27,6 +30,8 @@ namespace ColorNote_Backup_Viewer.ViewModel
             this.memoFilesData.fileSelectionChangedHandler += selectedFileChanged;
             this.viewState = 0;
             _isMenuBarOut = false;
+
+            this.CChangeViewType = new RelayCommand(obj => changeViewType());
         }
 
         private void selectedFileChanged()
@@ -40,6 +45,22 @@ namespace ColorNote_Backup_Viewer.ViewModel
             NotifyPropertyChanged(nameof(fileName));
             NotifyPropertyChanged(nameof(viewState));
             NotifyPropertyChanged(nameof(selectedView));
+        }
+
+        private void changeViewType()
+        {
+            if (viewState == 1)
+            {
+                viewState = 2;
+                selectedView.isCalendar = true;
+                NotifyPropertyChanged(nameof(viewState));
+            }
+            else if (viewState == 2)
+            {
+                viewState = 1;
+                selectedView.isCalendar = false;
+                NotifyPropertyChanged(nameof(viewState));
+            }
         }
     }
 }

@@ -14,14 +14,14 @@
                         <DataTrigger Binding="{Binding isCalendar}" Value="false">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <local:ListView/>
+                                    <ContentControl Content="{Binding VM_ListViewViewModel}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding isCalendar}" Value="true">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <local:CalendarView/>
+                                    <ContentControl Content="{Binding VM_CalendarViewViewModel}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>

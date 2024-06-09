@@ -26,9 +26,8 @@ namespace ColorNote_Backup_Viewer
 
             this.DataContext = dataContext;
 
-            Binding b = new Binding("isMenuBarOut");
-            b.Mode = BindingMode.TwoWay;
-            this.SetBinding(IsMenuBarOutProperty, b);
+            this.SetBinding(IsMenuBarOutProperty, new Binding("isMenuBarOut") { Mode = BindingMode.TwoWay });
+            this.SetBinding(ChangeViewTypeCommandProperty, new Binding("CChangeViewType"));
         }
 
         public static readonly DependencyProperty IsMenuBarOutProperty =
@@ -43,6 +42,18 @@ namespace ColorNote_Backup_Viewer
             set => SetValue(IsMenuBarOutProperty, value);
         }
 
+        public static readonly DependencyProperty ChangeViewTypeCommandProperty =
+        DependencyProperty.Register(
+            name: "ChangeViewTypeCommand",
+            propertyType: typeof(ICommand),
+            ownerType: typeof(MainWindow));
+
+        public ICommand ChangeViewTypeCommand
+        {
+            get => (ICommand)GetValue(ChangeViewTypeCommandProperty);
+            set => SetValue(ChangeViewTypeCommandProperty, value);
+        }
+
         private void EH_MenuBarOutButtonClick(object sender, RoutedEventArgs e)
         {
             IsMenuBarOut = true;
@@ -51,6 +62,11 @@ namespace ColorNote_Backup_Viewer
         private void EH_MenuBarCloseButtonClick(object sender, RoutedEventArgs e)
         {
             IsMenuBarOut = false;
+        }
+
+        private void EH_ChangeViewTypeButtonClick(object sender, RoutedEventArgs e)
+        {
+            ChangeViewTypeCommand.Execute(null);
         }
     }
 }

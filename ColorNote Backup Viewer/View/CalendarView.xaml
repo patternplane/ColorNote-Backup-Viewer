@@ -12,111 +12,73 @@
             <RowDefinition Height="10"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="◀" Width="50" HorizontalAlignment="Left"></Button>
-        <Button Content="▶" Width="50" HorizontalAlignment="Right"></Button>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-            2024 / 4
-        </TextBlock>
-        <WrapPanel Grid.Row="2" Orientation="Horizontal" Width="280">
-            <Border Background="Gray" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text=""></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="1"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="2"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="3"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="4"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="5"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="6" Foreground="Blue"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="7" Foreground="Red"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="8"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="9"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="10"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <Grid>
-                    <TextBox Background="{x:Null}" Text="11"></TextBox>
-                    <Border Background="Orange" Height="17" Width="32" VerticalAlignment="Bottom" Margin="0,0,0,3"></Border>
-                </Grid>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="12"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="13" Foreground="Blue"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="14" Foreground="Red"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="15"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="16"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="17"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="18"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="19"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="20" Foreground="Blue"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="21" Foreground="Red"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <Grid>
-                    <TextBox Background="{x:Null}" Text="11"></TextBox>
-                    <Border Background="Orange" Height="17" Width="32" VerticalAlignment="Bottom" Margin="0,0,0,3"></Border>
-                </Grid>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="23"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="24"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="25"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="26"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="27" Foreground="Blue"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="28" Foreground="Red"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="29"></TextBox>
-            </Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
-                <TextBox Background="{x:Null}" Text="30"></TextBox>
-            </Border>
-        </WrapPanel>
+        <Button Content="◀" Width="50" HorizontalAlignment="Left" Click="EH_goPreviousMonthButtonClick"></Button>
+        <Button Content="▶" Width="50" HorizontalAlignment="Right" Click="EH_goNextMonthButtonClick"></Button>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding calendarDate}" FontSize="20"/>
+        <Viewbox Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding monthDays}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" Width="280"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ContentControl MouseDoubleClick="EH_ItemDoubleClicked">
+                            <Border BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding isNullDate}" Value="true">
+                                                <Setter Property="Background" Value="Gray"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding isNullDate}" Value="false">
+                                                <Setter Property="Background" Value="White"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <TextBlock Background="{x:Null}" Margin="3,0">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding isNullDate}" Value="true">
+                                                        <Setter Property="Text" Value=""/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding isNullDate}" Value="false">
+                                                        <Setter Property="Text" Value="{Binding day}"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding dayOfWeek}" Value="6">
+                                                        <Setter Property="Foreground" Value="Blue"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding dayOfWeek}" Value="0">
+                                                        <Setter Property="Foreground" Value="Red"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <Border Height="17" Width="32" VerticalAlignment="Bottom" Margin="0,0,0,3">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding hasData}" Value="true">
+                                                        <Setter Property="Background" Value="Orange"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding hasData}" Value="false">
+                                                        <Setter Property="Background" Value="{x:Null}"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </ContentControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Viewbox>
     </Grid>
 </UserControl>

@@ -19,11 +19,10 @@ namespace ColorNote_Backup_Viewer.View
     /// </summary>
     public partial class NewFileInputDialog : Window
     {
-        public NewFileInputDialog(ViewModel.NewFileInputDialogViewModel dataContext)
+        public NewFileInputDialog()
         {
             InitializeComponent();
 
-            this.DataContext = dataContext;
             this.SetBinding(SetFilePathCommandProperty, new Binding("CSetFilePath"));
             this.SetBinding(OpenNewFileCommandProperty, new Binding("COpenNewFile"));
             Binding b = new Binding("lastResult");

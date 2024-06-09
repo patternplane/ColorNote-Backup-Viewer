@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -7,34 +8,21 @@ using System.Windows.Input;
 
 namespace ColorNote_Backup_Viewer.ViewModel
 {
-    public class MemoViewViewModel
+    public class MemoViewViewModel : ViewModelBase
     {
-        private Model.BackupFileData currrentFileData;
-        private Model.MemoExporter memoExporter;
-        public BindingList<Model.MemoData> memoListData { get; }
-        public BindingList<Model.MemoData> memoCalendar { get; }
-        public bool isCalendar { get; set; }
+        public CalendarViewViewModel VM_CalendarViewViewModel { get; }
+        public ListViewViewModel VM_ListViewViewModel { get; }
 
-        public BindingList<SortOrderSelecterViewModel> sortOrderSelectTable { get; }
+        private bool _isCalendar;
+        public bool isCalendar { get { return _isCalendar; } set { _isCalendar = value; NotifyPropertyChanged(nameof(isCalendar)); } }
 
         public MemoViewViewModel(Model.BackupFileData fileData, Model.MemoExporter memoExporter)
         {
-            this.currrentFileData = fileData;
-            this.memoExporter = memoExporter;
+            this.VM_CalendarViewViewModel = new CalendarViewViewModel(fileData);
+            this.VM_ListViewViewModel = new ListViewViewModel(fileData, memoExporter);
+
             this.isCalendar = false;
 
-            this.memoListData = fileData.memoList.getMemoList();
-            this.memoCalendar = fileData.memoCalendar.getMemoCalendar();
-
-            sortOrderSelectTable = new BindingList<SortOrderSelecterViewModel>();
-            sortOrderSelectTable.Add(new SortOrderSelecterViewModel("제목", SortType.Title, reOrder, true));
-            sortOrderSelectTable.Add(new SortOrderSelecterViewModel("날짜", SortType.Date, reOrder, false));
-            sortOrderSelectTable.Add(new SortOrderSelecterViewModel("색", SortType.Color, reOrder, false));
-        }
-
-        private void reOrder(SortType sortOrder)
-        {
-            currrentFileData.memoList.sortList(memoListData, sortOrder);
         }
     }
 }

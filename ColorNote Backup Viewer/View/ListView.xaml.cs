@@ -23,6 +23,25 @@ namespace ColorNote_Backup_Viewer.View
         public ListView()
         {
             InitializeComponent();
+
+            this.SetBinding(OpenMemoCommandProperty, new Binding("COpenMemo"));
+        }
+
+        public static readonly DependencyProperty OpenMemoCommandProperty =
+        DependencyProperty.Register(
+            name: "openMemoCommand",
+            propertyType: typeof(ICommand),
+            ownerType: typeof(ListView));
+
+        public ICommand openMemoCommand
+        {
+            get => (ICommand)GetValue(OpenMemoCommandProperty);
+            set => SetValue(OpenMemoCommandProperty, value);
+        }
+
+        private void EH_ItemDoubleClicked(object sender, MouseButtonEventArgs e)
+        {
+            openMemoCommand.Execute(((ListBoxItem)sender).DataContext);
         }
     }
 }
