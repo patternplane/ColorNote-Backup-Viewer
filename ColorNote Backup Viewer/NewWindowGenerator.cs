@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ColorNote_Backup_Viewer
 {
-    public class DialogReferencer
+    public class NewWindowGenerator
     {
         static public Model.BackupFileData ShowOepnNewFileDialog()
         {

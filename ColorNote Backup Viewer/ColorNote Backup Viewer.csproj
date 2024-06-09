@@ -74,7 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DialogReferencer.cs" />
+    <Compile Include="NewWindowGenerator.cs" />
     <Compile Include="Model\AESDecryptor.cs" />
     <Compile Include="Model\BackupFileData.cs" />
     <Compile Include="Model\BackupFileReader.cs" />

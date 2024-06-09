@@ -27,11 +27,6 @@ namespace ColorNote_Backup_Viewer.View
             this.SetBinding(NewFileOpenCommandProperty, new Binding("CNewFileOpen"));
         }
 
-        private void EH_NewFileOpenButtonClick(object sender, RoutedEventArgs e)
-        {
-            ((ViewModel.OpenFilesMenuViewModel)this.DataContext).openFile();
-        }
-
         public static readonly DependencyProperty NewFileOpenCommandProperty =
         DependencyProperty.Register(
             name: "NewFileOpenCommand",
@@ -42,6 +37,11 @@ namespace ColorNote_Backup_Viewer.View
         {
             get => (ICommand)GetValue(NewFileOpenCommandProperty);
             set => SetValue(NewFileOpenCommandProperty, value);
+        }
+
+        private void EH_NewFileOpenButtonClick(object sender, RoutedEventArgs e)
+        {
+            NewFileOpenCommand.Execute(null);
         }
     }
 }

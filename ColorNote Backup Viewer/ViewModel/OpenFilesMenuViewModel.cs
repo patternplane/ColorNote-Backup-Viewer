@@ -23,7 +23,7 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         public void openFile()
         {
-            Model.BackupFileData newFile = DialogReferencer.ShowOepnNewFileDialog();
+            Model.BackupFileData newFile = NewWindowGenerator.ShowOepnNewFileDialog();
             if (newFile != null)
                 memoFilesData.addNewFile(newFile);
         }
