@@ -25,6 +25,7 @@ namespace ColorNote_Backup_Viewer.View
             InitializeComponent();
 
             this.SetBinding(OpenMemoCommandProperty, new Binding("COpenMemo"));
+            this.SetBinding(ExportCommandProperty, new Binding("CExportMemo"));
         }
 
         public static readonly DependencyProperty OpenMemoCommandProperty =
@@ -39,9 +40,33 @@ namespace ColorNote_Backup_Viewer.View
             set => SetValue(OpenMemoCommandProperty, value);
         }
 
+        public static readonly DependencyProperty ExportCommandProperty =
+        DependencyProperty.Register(
+            name: "exportCommand",
+            propertyType: typeof(ICommand),
+            ownerType: typeof(ListView));
+
+        public ICommand exportCommand
+        {
+            get => (ICommand)GetValue(ExportCommandProperty);
+            set => SetValue(ExportCommandProperty, value);
+        }
+
         private void EH_ItemDoubleClicked(object sender, MouseButtonEventArgs e)
         {
             openMemoCommand.Execute(((ListBoxItem)sender).DataContext);
+        }
+
+        private void EH_ExportMouseRightClick(object sender, MouseButtonEventArgs e)
+        {
+            ListBoxItem viewItem = (ListBoxItem)sender;
+            Border viewItemBorder = (Border)VisualTreeHelper.GetChild(viewItem, 0);
+            ContentPresenter viewItemCP = (ContentPresenter)VisualTreeHelper.GetChild(viewItemBorder, 0);
+
+            System.Windows.Controls.Primitives.Popup exportMenu = (System.Windows.Controls.Primitives.Popup)viewItemCP.ContentTemplate.FindName("ExportPopup", viewItemCP);
+
+            exportMenu.IsOpen = true;
+            //exportCommand.Execute(((ListBox)((ListBoxItem)sender).Parent).SelectedItems);
         }
     }
 }
