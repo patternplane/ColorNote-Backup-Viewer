@@ -27,6 +27,8 @@ namespace ColorNote_Backup_Viewer.View
             this.SetBinding(GoNextMonthCommandProperty, new Binding("CGoNextMonth"));
             this.SetBinding(GoPreviousMonthCommandProperty, new Binding("CGoPreviousMonth"));
             this.SetBinding(OpenMemoCommandProperty, new Binding("COpenMemo"));
+            this.SetBinding(ExportMemoCommandProperty, new Binding("CExportMemo"));
+            this.SetBinding(SelectedDayProperty, new Binding("selectedDay") { Mode = BindingMode.OneWayToSource });
         }
 
         public static readonly DependencyProperty GoNextMonthCommandProperty =
@@ -65,6 +67,30 @@ namespace ColorNote_Backup_Viewer.View
             set => SetValue(OpenMemoCommandProperty, value);
         }
 
+        public static readonly DependencyProperty SelectedDayProperty =
+        DependencyProperty.Register(
+            name: "selectedDay",
+            propertyType: typeof(object),
+            ownerType: typeof(CalendarView));
+
+        public object selectedDay
+        {
+            get => GetValue(SelectedDayProperty);
+            set => SetValue(SelectedDayProperty, value);
+        }
+
+        public static readonly DependencyProperty ExportMemoCommandProperty =
+        DependencyProperty.Register(
+            name: "exportMemoCommand",
+            propertyType: typeof(ICommand),
+            ownerType: typeof(CalendarView));
+
+        public ICommand exportMemoCommand
+        {
+            get => (ICommand)GetValue(ExportMemoCommandProperty);
+            set => SetValue(ExportMemoCommandProperty, value);
+        }
+
         private void EH_goNextMonthButtonClick(object sender, RoutedEventArgs e)
         {
             goNextMonthCommand.Execute(null);
@@ -77,9 +103,15 @@ namespace ColorNote_Backup_Viewer.View
 
         private void EH_ItemDoubleClicked(object sender, MouseButtonEventArgs e)
         {
-            List<Model.MemoData> data = ((ViewModel.MonthDayViewModel)((ContentControl)sender).DataContext).data;
-            if (data != null)
-                openMemoCommand.Execute(data);
+            selectedDay = ((FrameworkElement)sender).DataContext;
+            openMemoCommand.Execute(null);
+        }
+
+        private void EH_MemoRightClick(object sender, MouseButtonEventArgs e)
+        {
+            selectedDay = ((FrameworkElement)sender).DataContext;
+            if (((string)((FrameworkElement)sender).Tag).CompareTo("hasMemo") == 0)
+                exportPopup.isShow = true;
         }
     }
 }

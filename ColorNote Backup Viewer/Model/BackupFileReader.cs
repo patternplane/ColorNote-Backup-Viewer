@@ -26,7 +26,7 @@ namespace ColorNote_Backup_Viewer.Model
                 this.filePath = path;
                 return true;
             }
-            catch (Exception e)
+            catch 
             {
                 return false;
             }

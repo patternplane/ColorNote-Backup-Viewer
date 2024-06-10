@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace ColorNote_Backup_Viewer.View
             InitializeComponent();
 
             this.SetBinding(OpenMemoCommandProperty, new Binding("COpenMemo"));
-            this.SetBinding(ExportCommandProperty, new Binding("CExportMemo"));
+            this.SetBinding(SelectedItemsProperty, new Binding("selectedItems") { Mode = BindingMode.OneWayToSource });
         }
 
         public static readonly DependencyProperty OpenMemoCommandProperty =
@@ -40,16 +41,16 @@ namespace ColorNote_Backup_Viewer.View
             set => SetValue(OpenMemoCommandProperty, value);
         }
 
-        public static readonly DependencyProperty ExportCommandProperty =
+        public static readonly DependencyProperty SelectedItemsProperty =
         DependencyProperty.Register(
-            name: "exportCommand",
-            propertyType: typeof(ICommand),
+            name: "selectedItems",
+            propertyType: typeof(IList),
             ownerType: typeof(ListView));
 
-        public ICommand exportCommand
+        public IList selectedItems
         {
-            get => (ICommand)GetValue(ExportCommandProperty);
-            set => SetValue(ExportCommandProperty, value);
+            get => (IList)GetValue(SelectedItemsProperty);
+            set => SetValue(SelectedItemsProperty, value);
         }
 
         private void EH_ItemDoubleClicked(object sender, MouseButtonEventArgs e)
@@ -59,14 +60,12 @@ namespace ColorNote_Backup_Viewer.View
 
         private void EH_ExportMouseRightClick(object sender, MouseButtonEventArgs e)
         {
-            ListBoxItem viewItem = (ListBoxItem)sender;
-            Border viewItemBorder = (Border)VisualTreeHelper.GetChild(viewItem, 0);
-            ContentPresenter viewItemCP = (ContentPresenter)VisualTreeHelper.GetChild(viewItemBorder, 0);
+            ExportPopup.isShow = true;
+        }
 
-            System.Windows.Controls.Primitives.Popup exportMenu = (System.Windows.Controls.Primitives.Popup)viewItemCP.ContentTemplate.FindName("ExportPopup", viewItemCP);
-
-            exportMenu.IsOpen = true;
-            //exportCommand.Execute(((ListBox)((ListBoxItem)sender).Parent).SelectedItems);
+        private void EH_MemoSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedItems = ((ListBox)sender).SelectedItems;
         }
     }
 }

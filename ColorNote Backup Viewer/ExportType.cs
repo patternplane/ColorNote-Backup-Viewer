@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ColorNote_Backup_Viewer
 {
-    public enum ViewType
+    public enum ExportType
     {
-        List,
-        Calendar
+        TXT,
+        HTML
     }
 }

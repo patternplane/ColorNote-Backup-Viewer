@@ -18,7 +18,7 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         public MemoViewViewModel(Model.BackupFileData fileData, Model.MemoExporter memoExporter)
         {
-            this.VM_CalendarViewViewModel = new CalendarViewViewModel(fileData);
+            this.VM_CalendarViewViewModel = new CalendarViewViewModel(fileData, memoExporter);
             this.VM_ListViewViewModel = new ListViewViewModel(fileData, memoExporter);
 
             this.isCalendar = false;

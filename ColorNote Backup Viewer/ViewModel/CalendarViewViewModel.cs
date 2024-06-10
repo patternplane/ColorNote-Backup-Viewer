@@ -10,6 +10,9 @@ namespace ColorNote_Backup_Viewer.ViewModel
 {
     public class CalendarViewViewModel : ViewModelBase
     {
+        private Model.MemoExporter memoExporter;
+        private System.Windows.Forms.FolderBrowserDialog FD_OutputDir;
+
         public BindingList<Model.MemoData> memoCalendar { get; }
 
         private Dictionary<Int64, List<Model.MemoData>> memoCalendarFinder;
@@ -17,17 +20,23 @@ namespace ColorNote_Backup_Viewer.ViewModel
         public string calendarDate { get { return calendarMonth.Year + " / " + calendarMonth.Month; } }
 
         public MonthDayViewModel[] monthDays { get; }
+        public MonthDayViewModel selectedDay { get; set; }
 
         public ICommand CGoNextMonth { get; }
         public ICommand CGoPreviousMonth { get; }
         public ICommand COpenMemo { get; }
+        public ICommand CExportMemo { get; }
 
-        public CalendarViewViewModel(Model.BackupFileData fileData)
+        public CalendarViewViewModel(Model.BackupFileData fileData, Model.MemoExporter memoExporter)
         {
             CGoNextMonth = new RelayCommand(obj => goNextMonth());
             CGoPreviousMonth = new RelayCommand(obj => goPreviousMonth());
-            COpenMemo = new RelayCommand(obj => showMemo((List<Model.MemoData>)obj));
+            COpenMemo = new RelayCommand(obj => showMemo());
+            CExportMemo = new RelayCommand(obj => exportMemo((ExportType)obj));
 
+            this.FD_OutputDir = new System.Windows.Forms.FolderBrowserDialog();
+
+            this.memoExporter = memoExporter;
             this.memoCalendar = fileData.memoCalendar.getMemoCalendar();
 
             this.memoCalendarFinder = new Dictionary<long, List<Model.MemoData>>();
@@ -84,10 +93,22 @@ namespace ColorNote_Backup_Viewer.ViewModel
             assignMonth(calendarMonth);
         }
 
-        private void showMemo(List<Model.MemoData> data)
+        private void showMemo()
         {
-            foreach (Model.MemoData d in data)
-                NewWindowGenerator.ShowMemoContentWindow(d);
+            if (selectedDay != null && selectedDay.data != null)
+                foreach (Model.MemoData d in selectedDay.data)
+                    NewWindowGenerator.ShowMemoContentWindow(d);
+        }
+
+        private void exportMemo(ExportType type)
+        {
+            if (FD_OutputDir.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+                return;
+
+            int fileNumber = 1;
+            if (selectedDay != null)
+                foreach (Model.MemoData d in selectedDay.data)
+                    memoExporter.exportFile(d, FD_OutputDir.SelectedPath + "\\memo" + fileNumber++, type);
         }
     }
 }

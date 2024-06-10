@@ -29,7 +29,8 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </StackPanel>
-        <ListBox Grid.Row="1" ItemsSource="{Binding memoListData}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Extended">
+        <local:ExportPopup isShow="False" x:Name="ExportPopup"/>
+        <ListBox Grid.Row="1" ItemsSource="{Binding memoListData}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Extended" SelectionChanged="EH_MemoSelectionChanged">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -53,13 +54,6 @@
 
                         <TextBlock Grid.Column="0" Text="{Binding title}" FontSize="14" TextTrimming="CharacterEllipsis"></TextBlock>
                         <TextBlock Grid.Column="1" Text="{Binding date_display}" FontSize="14" Margin="5,0,5,0" HorizontalAlignment="Right"></TextBlock>
-
-                        <Popup x:Name="ExportPopup" StaysOpen="False" Placement="MousePoint">
-                            <StackPanel Background="LightGray">
-                                <Button Content="텍스트 파일로 내보내기"/>
-                                <Button Content="HTML 파일로 내보내기"/>
-                            </StackPanel>
-                        </Popup>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

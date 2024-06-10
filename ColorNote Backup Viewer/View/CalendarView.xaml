@@ -15,6 +15,7 @@
         <Button Content="◀" FontSize="20" Width="50" HorizontalAlignment="Left" Click="EH_goPreviousMonthButtonClick"></Button>
         <Button Content="▶" FontSize="20" Width="50" HorizontalAlignment="Right" Click="EH_goNextMonthButtonClick"></Button>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding calendarDate}" FontSize="20"/>
+        <local:ExportPopup isShow="False" x:Name="exportPopup"/>
         <Viewbox Grid.Row="2">
             <ItemsControl ItemsSource="{Binding monthDays}">
                 <ItemsControl.ItemsPanel>
@@ -24,7 +25,19 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ContentControl MouseDoubleClick="EH_ItemDoubleClicked">
+                        <ContentControl MouseDoubleClick="EH_ItemDoubleClicked" PreviewMouseRightButtonUp="EH_MemoRightClick">
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding hasData}" Value="true">
+                                            <Setter Property="Tag" Value="hasMemo"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding hasData}" Value="false">
+                                            <Setter Property="Tag" Value=""/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
                             <Border BorderBrush="Black" BorderThickness="0.5" Height="50" Width="40">
                                 <Border.Style>
                                     <Style TargetType="Border">
