@@ -8,12 +8,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="10"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="◀" Width="50" HorizontalAlignment="Left" Click="EH_goPreviousMonthButtonClick"></Button>
-        <Button Content="▶" Width="50" HorizontalAlignment="Right" Click="EH_goNextMonthButtonClick"></Button>
+        <Button Content="◀" FontSize="20" Width="50" HorizontalAlignment="Left" Click="EH_goPreviousMonthButtonClick"></Button>
+        <Button Content="▶" FontSize="20" Width="50" HorizontalAlignment="Right" Click="EH_goNextMonthButtonClick"></Button>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding calendarDate}" FontSize="20"/>
         <Viewbox Grid.Row="2">
             <ItemsControl ItemsSource="{Binding monthDays}">
