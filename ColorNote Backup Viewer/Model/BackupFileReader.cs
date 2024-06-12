@@ -77,12 +77,6 @@ namespace ColorNote_Backup_Viewer.Model
             MemoJSONParser jsonParser = new MemoJSONParser();
             List<MemoData> result = new List<MemoData>();
 
-            FileStream f= new FileStream(@"C:\Users\patternplane\Desktop\결과.txt", FileMode.Create);
-            BinaryWriter sr = new BinaryWriter(f);
-            sr.Write(lastDecryptedData);
-            sr.Close();
-            f.Close();
-
             foreach (string eachMemoJson in jsonParser.parse(Encoding.UTF8.GetChars(lastDecryptedData)))
             {
                 try
