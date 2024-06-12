@@ -17,7 +17,7 @@
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding calendarDate}" FontSize="20"/>
         <local:ExportPopup isShow="False" x:Name="exportPopup"/>
         <Viewbox Grid.Row="2">
-            <ItemsControl ItemsSource="{Binding monthDays}">
+            <ItemsControl ItemsSource="{Binding VM_MonthDays}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" Width="280"/>

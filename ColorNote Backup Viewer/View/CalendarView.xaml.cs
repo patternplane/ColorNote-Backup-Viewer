@@ -28,7 +28,7 @@ namespace ColorNote_Backup_Viewer.View
             this.SetBinding(GoPreviousMonthCommandProperty, new Binding("CGoPreviousMonth"));
             this.SetBinding(OpenMemoCommandProperty, new Binding("COpenMemo"));
             this.SetBinding(ExportMemoCommandProperty, new Binding("CExportMemo"));
-            this.SetBinding(SelectedDayProperty, new Binding("selectedDay") { Mode = BindingMode.OneWayToSource });
+            this.SetBinding(SelectedDayProperty, new Binding("VM_SelectedDay") { Mode = BindingMode.OneWayToSource });
         }
 
         public static readonly DependencyProperty GoNextMonthCommandProperty =

@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Label Content="정렬 기준 : " VerticalAlignment="Center"/>
-            <ItemsControl ItemsSource="{Binding sortOrderSelectTable}">
+            <ItemsControl ItemsSource="{Binding VM_SortOrderSelectTable}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>

@@ -69,7 +69,7 @@
                         </TextBlock.RenderTransform>
                     </TextBlock>
                 </Button>
-                <ContentControl Content="{Binding openFilesView}" FlowDirection="LeftToRight"/>
+                <ContentControl Content="{Binding VM_OpenFilesView}" FlowDirection="LeftToRight"/>
             </StackPanel>
             <Border.Style>
                 <Style TargetType="Border">

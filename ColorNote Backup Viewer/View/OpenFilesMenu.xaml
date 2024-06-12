@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <Button Margin="6" Content="+ 새 파일 열기" FontSize="15" Click="EH_NewFileOpenButtonClick" IsEnabled="{Binding addButtonEnable}"/>
             <ListBox Margin="6,0,6,6" Grid.Row="1" BorderThickness="1" BorderBrush="Black"
-                     ItemsSource="{Binding memoFilesData.openFilesList}"
+                     ItemsSource="{Binding VMM_MemoFiles.VM_OpenFilesList}"
                      SelectedIndex="{Binding selectedIdx, Mode=OneWayToSource}">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ListBoxItem}">
