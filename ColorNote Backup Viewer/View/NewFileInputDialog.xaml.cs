@@ -25,10 +25,7 @@ namespace ColorNote_Backup_Viewer.View
 
             this.SetBinding(SetFilePathCommandProperty, new Binding("CSetFilePath"));
             this.SetBinding(OpenNewFileCommandProperty, new Binding("COpenNewFile"));
-            Binding b = new Binding("lastResult");
-            b.Mode = BindingMode.OneWay;
-            this.SetBinding(ResultProperty, b);
-            //this.SetBinding(ResultProperty, new Binding("lastResult"));
+            this.SetBinding(ResultProperty, new Binding("lastResult") { Mode = BindingMode.OneWay });
         }
 
         public static readonly DependencyProperty SetFilePathCommandProperty =

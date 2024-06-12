@@ -10,7 +10,6 @@ namespace ColorNote_Backup_Viewer.ViewModel
     {
         public string fileName { get; set; }
         public string metaInfo { get; set; }
-        public MemoViewViewModel memoViewViewModel;
         
         private string filePath;
 

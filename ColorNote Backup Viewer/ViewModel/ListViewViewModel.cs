@@ -16,7 +16,7 @@ namespace ColorNote_Backup_Viewer.ViewModel
         private System.Windows.Forms.FolderBrowserDialog FD_OutputDir;
 
         public BindingList<Model.MemoData> memoListData { get; }
-        public BindingList<SortOrderSelecterViewModel> sortOrderSelectTable { get; }
+        public BindingList<SortOrderSelecterViewModel> VM_SortOrderSelectTable { get; }
 
         public IList selectedItems { get; set; }
 
@@ -34,10 +34,10 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
             this.memoListData = currentFile.memoList.getMemoList();
 
-            this.sortOrderSelectTable = new BindingList<SortOrderSelecterViewModel>();
-            sortOrderSelectTable.Add(new SortOrderSelecterViewModel("제목", SortType.Title, reOrder, true));
-            sortOrderSelectTable.Add(new SortOrderSelecterViewModel("날짜", SortType.Date, reOrder, false));
-            sortOrderSelectTable.Add(new SortOrderSelecterViewModel("색", SortType.Color, reOrder, false));
+            this.VM_SortOrderSelectTable = new BindingList<SortOrderSelecterViewModel>();
+            VM_SortOrderSelectTable.Add(new SortOrderSelecterViewModel("제목", SortType.Title, reOrder, true));
+            VM_SortOrderSelectTable.Add(new SortOrderSelecterViewModel("날짜", SortType.Date, reOrder, false));
+            VM_SortOrderSelectTable.Add(new SortOrderSelecterViewModel("색", SortType.Color, reOrder, false));
         }
 
         private void reOrder(SortType sortOrder)

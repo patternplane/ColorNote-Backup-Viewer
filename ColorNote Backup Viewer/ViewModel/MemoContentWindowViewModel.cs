@@ -10,13 +10,11 @@ namespace ColorNote_Backup_Viewer.ViewModel
     {
         public string title { get; }
         public string content { get; }
-        //public bool isReadOnly { get; }
 
         public MemoContentWindowViewModel(Model.MemoData data)
         {
             this.title = data.title;
             this.content = data.text;
-            //this.isReadOnly = false;
         }
     }
 }

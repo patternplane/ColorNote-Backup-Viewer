@@ -11,11 +11,11 @@ namespace ColorNote_Backup_Viewer.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public OpenFilesMenuViewModel openFilesView { get; }
-        public OpenedFileViewModelsManager memoFilesData { get; }
+        public OpenFilesMenuViewModel VM_OpenFilesView { get; }
+        public OpenedFileViewModelsManager VMM_MemoFiles { get; }
 
-        public MemoViewViewModel selectedView { get { return memoFilesData.selectedView; } }
-        public string fileName { get { return memoFilesData.selectedFile?.fileName; } }
+        public MemoViewViewModel selectedView { get { return VMM_MemoFiles.VM_SelectedView; } }
+        public string fileName { get { return VMM_MemoFiles.VM_SelectedFile?.fileName; } }
         public int viewState { get; set; } // 0 : none, 1 : list, 2 : calendar
 
         private bool _isMenuBarOut;
@@ -25,9 +25,9 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         public MainWindowViewModel(OpenFilesMenuViewModel openFilesMenuVM, OpenedFileViewModelsManager memoFilesData)
         {
-            this.openFilesView = openFilesMenuVM;
-            this.memoFilesData = memoFilesData;
-            this.memoFilesData.fileSelectionChangedHandler += selectedFileChanged;
+            this.VM_OpenFilesView = openFilesMenuVM;
+            this.VMM_MemoFiles = memoFilesData;
+            this.VMM_MemoFiles.EH_fileSelectionChanged += selectedFileChanged;
             this.viewState = 0;
             _isMenuBarOut = false;
 
@@ -36,9 +36,9 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         private void selectedFileChanged()
         {
-            if (memoFilesData.selectedFile == null)
+            if (VMM_MemoFiles.VM_SelectedFile == null)
                 viewState = 0;
-            else if (memoFilesData.selectedView.isCalendar)
+            else if (VMM_MemoFiles.VM_SelectedView.isCalendar)
                 viewState = 2;
             else
                 viewState = 1;

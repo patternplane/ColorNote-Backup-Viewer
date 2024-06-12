@@ -19,8 +19,8 @@ namespace ColorNote_Backup_Viewer.ViewModel
         private DateTime calendarMonth;
         public string calendarDate { get { return calendarMonth.Year + " / " + calendarMonth.Month; } }
 
-        public MonthDayViewModel[] monthDays { get; }
-        public MonthDayViewModel selectedDay { get; set; }
+        public MonthDayViewModel[] VM_MonthDays { get; }
+        public MonthDayViewModel VM_SelectedDay { get; set; }
 
         public ICommand CGoNextMonth { get; }
         public ICommand CGoPreviousMonth { get; }
@@ -52,9 +52,9 @@ namespace ColorNote_Backup_Viewer.ViewModel
                 }
             }
             this.calendarMonth = DateTime.Now;
-            this.monthDays = new MonthDayViewModel[42];
+            this.VM_MonthDays = new MonthDayViewModel[42];
             for (int i = 0; i < 42; i++)
-                monthDays[i] = new MonthDayViewModel();
+                VM_MonthDays[i] = new MonthDayViewModel();
             assignMonth(calendarMonth);
         }
 
@@ -67,16 +67,16 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
             int i = 0;
             for (; i < startDay; i++)
-                monthDays[i].setData(null, -1, -1, true, false);
+                VM_MonthDays[i].setData(null, -1, -1, true, false);
             for (; i < startDay + dayCount; i++)
             {
                 if (memoCalendarFinder.ContainsKey(startTime + i - startDay + 1))
-                    monthDays[i].setData(memoCalendarFinder[startTime + i - startDay + 1], i - startDay + 1, i % 7, false, true);
+                    VM_MonthDays[i].setData(memoCalendarFinder[startTime + i - startDay + 1], i - startDay + 1, i % 7, false, true);
                 else
-                    monthDays[i].setData(null, i - startDay + 1, i % 7, false, false);
+                    VM_MonthDays[i].setData(null, i - startDay + 1, i % 7, false, false);
             }
-            for (; i < monthDays.Length; i++)
-                monthDays[i].setData(null, -1, -1, true, false);
+            for (; i < VM_MonthDays.Length; i++)
+                VM_MonthDays[i].setData(null, -1, -1, true, false);
         }
 
         private void goNextMonth()
@@ -95,8 +95,8 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         private void showMemo()
         {
-            if (selectedDay != null && selectedDay.data != null)
-                foreach (Model.MemoData d in selectedDay.data)
+            if (VM_SelectedDay != null && VM_SelectedDay.data != null)
+                foreach (Model.MemoData d in VM_SelectedDay.data)
                     NewWindowGenerator.ShowMemoContentWindow(d);
         }
 
@@ -106,8 +106,8 @@ namespace ColorNote_Backup_Viewer.ViewModel
                 return;
 
             int fileNumber = 1;
-            if (selectedDay != null)
-                foreach (Model.MemoData d in selectedDay.data)
+            if (VM_SelectedDay != null)
+                foreach (Model.MemoData d in VM_SelectedDay.data)
                     memoExporter.exportFile(d, FD_OutputDir.SelectedPath + "\\memo" + fileNumber++, type);
         }
     }
