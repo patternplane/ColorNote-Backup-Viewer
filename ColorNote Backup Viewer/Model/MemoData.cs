@@ -15,7 +15,7 @@ namespace ColorNote_Backup_Viewer.Model
         public bool isCalendar;
         public Int64 calendarDate;
         public bool isDeleted;
-        public int color;
+        public int color { get; }
 
         public MemoData(string title, string text, long date, bool isCalendar, Int64 calendarDate, bool isDeleted, int color)
         {
