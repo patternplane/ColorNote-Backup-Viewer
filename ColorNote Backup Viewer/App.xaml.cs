@@ -15,11 +15,10 @@ namespace ColorNote_Backup_Viewer
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ViewModel.MemoFilesData memoFilesData = 
-                new ViewModel.MemoFilesData(
-                    new ViewModel.MemoViewViewModelFactory(
-                        new Model.MemoExporter(
-                            new Model.HTMLDocumentManager())));
+            ViewModel.OpenedFileViewModelsManager memoFilesData = 
+                new ViewModel.OpenedFileViewModelsManager(
+                    new Model.MemoExporter(
+                        new Model.HTMLDocumentManager()));
             ViewModel.OpenFilesMenuViewModel openFileMenu = new ViewModel.OpenFilesMenuViewModel(memoFilesData);
 
             new MainWindow(

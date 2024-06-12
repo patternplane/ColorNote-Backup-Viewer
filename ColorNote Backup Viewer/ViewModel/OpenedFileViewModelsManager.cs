@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ColorNote_Backup_Viewer.ViewModel
 {
-    public class MemoFilesData
+    public class OpenedFileViewModelsManager
     {
         public BindingList<BackupFileViewModel> openFilesList { get; }
         public BackupFileViewModel selectedFile { get; private set; } = null;
@@ -17,15 +17,15 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         public delegate void FileSelectionChanged();
         public FileSelectionChanged fileSelectionChangedHandler;
-        private MemoViewViewModelFactory memoViewFactory;
+        private Model.MemoExporter memoExporter;
 
-        public MemoFilesData(MemoViewViewModelFactory memoViewFactory)
+        public OpenedFileViewModelsManager(Model.MemoExporter memoExporter)
         {
             this.openFilesList = new BindingList<BackupFileViewModel>();
             this.viewList = new BindingList<MemoViewViewModel>();
             select(-1);
 
-            this.memoViewFactory = memoViewFactory;
+            this.memoExporter = memoExporter;
         }
 
         public void select(int idx)
@@ -51,7 +51,7 @@ namespace ColorNote_Backup_Viewer.ViewModel
         public void addNewFile(Model.BackupFileData newFileData)
         {
             openFilesList.Add(new BackupFileViewModel(newFileData));
-            viewList.Add(memoViewFactory.newMemoViewViewModel(newFileData));
+            viewList.Add(new MemoViewViewModel(newFileData, memoExporter));
         }
     }
 }

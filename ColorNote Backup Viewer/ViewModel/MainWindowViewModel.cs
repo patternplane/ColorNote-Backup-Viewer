@@ -12,7 +12,7 @@ namespace ColorNote_Backup_Viewer.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         public OpenFilesMenuViewModel openFilesView { get; }
-        public MemoFilesData memoFilesData { get; }
+        public OpenedFileViewModelsManager memoFilesData { get; }
 
         public MemoViewViewModel selectedView { get { return memoFilesData.selectedView; } }
         public string fileName { get { return memoFilesData.selectedFile?.fileName; } }
@@ -23,7 +23,7 @@ namespace ColorNote_Backup_Viewer.ViewModel
 
         public ICommand CChangeViewType { get; }
 
-        public MainWindowViewModel(OpenFilesMenuViewModel openFilesMenuVM, MemoFilesData memoFilesData)
+        public MainWindowViewModel(OpenFilesMenuViewModel openFilesMenuVM, OpenedFileViewModelsManager memoFilesData)
         {
             this.openFilesView = openFilesMenuVM;
             this.memoFilesData = memoFilesData;

@@ -95,13 +95,12 @@
     <Compile Include="ViewModel\ListViewViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MemoContentWindowViewModel.cs" />
-    <Compile Include="ViewModel\MemoViewViewModelFactory.cs" />
     <Compile Include="ViewModel\MemoViewViewModel.cs" />
     <Compile Include="ViewModel\MonthDayViewModel.cs" />
     <Compile Include="ViewModel\NewFileInputDialogViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\OpenFilesMenuViewModel.cs" />
-    <Compile Include="ViewModel\MemoFilesData.cs" />
+    <Compile Include="ViewModel\OpenedFileViewModelsManager.cs" />
     <Compile Include="ViewModel\SortOrderSelecterViewModel.cs" />
     <Compile Include="ExportType.cs" />
     <Compile Include="View\CalendarView.xaml.cs">

@@ -11,12 +11,12 @@ namespace ColorNote_Backup_Viewer.ViewModel
     public class OpenFilesMenuViewModel : ViewModelBase
     {
         public ICommand CNewFileOpen { get; }
-        public MemoFilesData memoFilesData { get; private set; }
+        public OpenedFileViewModelsManager memoFilesData { get; private set; }
         private int _selectedIdx;
         public int selectedIdx { get { return _selectedIdx; } set { _selectedIdx = value; memoFilesData.select(selectedIdx); } }
         public bool addButtonEnable { get; set; }
 
-        public OpenFilesMenuViewModel(MemoFilesData memoFilesData)
+        public OpenFilesMenuViewModel(OpenedFileViewModelsManager memoFilesData)
         {
             this.memoFilesData = memoFilesData;
             this.addButtonEnable = true;
